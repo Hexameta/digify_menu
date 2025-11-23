@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "dist"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# This is a Vite + React app. The Next.js plugin is not required
+# (it expects a `.next` folder). Remove any reference to
+# @netlify/plugin-nextjs so Netlify uses the plain static publish.
