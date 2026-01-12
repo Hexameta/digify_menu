@@ -27,6 +27,7 @@ import {
 import { Link } from "react-router-dom";
 import digifyMenuLogoDark from "./assets/logo/digifyMenuLogoDark.png";
 import digifyMenuLogoWhite from "./assets/logo/digifyMenuLogoWhite.png";
+import bannerQr from "./assets/qrbanner.png";
 import demoQrCode from "./assets/logo/demo-qr.png";
 
 // --- Components ---
@@ -125,7 +126,7 @@ const Navbar = () => {
             onClick={() =>
               (window.location.href = "mailto:digifymenuofficial@gmail.com")
             }
-            className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:-translate-y-0.5"
+            className="px-6 py-2 rounded-full bg-gradient-to-right from-orange-500 to-red-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:-translate-y-0.5"
           >
             {/* Start Free Trial */}
             Contact Us
@@ -400,7 +401,7 @@ const Features = () => {
 // 4. Why Choose Us
 const WhyChooseUs = () => {
   return (
-    <section className="md:bg-[url('qrbanner.png')] bg-cover py-20 bg-slate-50 " >
+    <section className={`md:bg-[url('assets/qrbanner.png')] bg-cover py-20 bg-slate-50 `} >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -453,7 +454,7 @@ const WhyChooseUs = () => {
             </div>
           </div>
           <div className="d-block lg:hidden">
-            <img src="assets/qrbanner.png" alt="Digify Menu Banner" className="rounded-2xl shadow-xl" />
+            <img src={bannerQr} alt="Digify Menu Banner" className="rounded-2xl shadow-xl" />
           </div>
           {/* <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-2xl transform rotate-3 blur-sm opacity-30"></div>
