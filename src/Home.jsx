@@ -8,8 +8,47 @@ import {
 } from 'lucide-react';
 import digifyMenuLogoDark from './assets/logos/digifyMenuLogoDark.png';
 import digifyMenuLogoWhite from './assets/logos/digifyMenuLogoWhite.png';
+import demoQrCode from './assets/logos/demo-qr.png';
 
 // --- Components ---
+
+// 0. Demo QR Modal
+const DemoModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
+      <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl relative animate-scale-in">
+        <button 
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 transition-colors text-slate-400 hover:text-slate-600"
+        >
+          <X size={20} />
+        </button>
+        
+        <div className="text-center space-y-6">
+          <div className="space-y-2">
+            <h3 className="text-2xl font-bold text-slate-900">Experience the Demo</h3>
+            <p className="text-slate-500 text-sm">Scan now from your phone to see the delivery-style menu in action.</p>
+          </div>
+          
+          <div className="bg-slate-50 p-6 rounded-2xl border-2 border-dashed border-slate-200">
+            <img 
+              src={demoQrCode} 
+              alt="Scan to see demo" 
+              className="w-full aspect-square rounded-xl shadow-lg border-4 border-white"
+            />
+          </div>
+          
+          <div className="flex items-center justify-center gap-2 text-orange-600 font-medium text-sm">
+            <Smartphone size={16} />
+            <span>Works on any smartphone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // 1. Navigation Bar
 const Navbar = () => {
@@ -35,7 +74,8 @@ const Navbar = () => {
           <a href="#showcase" className="text-slate-600 hover:text-orange-600 transition-colors font-medium">Showcase</a>
           <a href="#pricing" className="text-slate-600 hover:text-orange-600 transition-colors font-medium">Pricing</a>
           <button className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:-translate-y-0.5">
-            Start Free Trial
+            {/* Start Free Trial */}
+            Contact Us
           </button>
         </div>
 
@@ -61,9 +101,21 @@ const Navbar = () => {
 };
 
 // 2. Hero Section
-const Hero = () => {
+const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
+  const handleDemoClick = () => {
+    // Simple check for mobile/tablet
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      window.location.href = 'https://menu.digifygarden.com';
+    } else {
+      setIsDemoModalOpen(true);
+    }
+  };
+
   return (
     <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
+      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
       {/* Background Shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-orange-400/20 rounded-full blur-[100px] animate-pulse"></div>
@@ -82,17 +134,22 @@ const Hero = () => {
             Delicious.
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            The smartest way for restaurants to manage menus, engage customers, and boost sales. 
-            From QR codes to gamified rewards — all in one place.
+            Stop wasting money on printing and start driving revenue. Update your pricing in seconds and highlight your most profitable dishes with a dynamic, mobile-managed menu system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button className="px-8 py-4 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 transition-colors shadow-xl shadow-orange-500/10 flex items-center justify-center gap-2">
               Start Free Trial <ChevronRight className="w-5 h-5" />
             </button>
-            <button className="px-8 py-4 rounded-full border border-gray-300 text-slate-700 font-medium text-lg hover:bg-white hover:border-orange-500 hover:text-orange-600 transition-colors flex items-center justify-center gap-2 bg-white/50 backdrop-blur-sm">
+            <button 
+              onClick={handleDemoClick}
+              className="px-8 py-4 rounded-full border border-gray-300 text-slate-700 font-medium text-lg hover:bg-white hover:border-orange-500 hover:text-orange-600 transition-colors flex items-center justify-center gap-2 bg-white/50 backdrop-blur-sm"
+            >
               <Smartphone className="w-5 h-5" /> See Live Demo
             </button>
           </div>
+          <p className="text-sm text-slate-400 italic">
+            "Simply place a barcode on your tables for customers to scan - no app required."
+          </p>
         </div>
 
         {/* Visual Mockups */}
@@ -115,7 +172,7 @@ const Hero = () => {
                       <div className="h-2 w-20 bg-slate-200 rounded mb-1"></div>
                       <div className="h-2 w-10 bg-slate-200 rounded"></div>
                     </div>
-                    <div className="text-orange-500 font-bold">$12</div>
+                    <div className="text-orange-500 font-bold">₹12</div>
                   </div>
                 ))}
                 <div className="mt-4 bg-gradient-to-r from-orange-500 to-red-500 p-3 rounded-xl text-center text-white text-xs font-bold shadow-lg shadow-orange-500/30">
@@ -155,14 +212,14 @@ const Hero = () => {
 
 // 3. Features Grid
 const features = [
-  { icon: Layers, title: "Dynamic Menu Management", desc: "Add, edit, or update menus & prices instantly. No more re-printing.", color: "from-blue-500 to-cyan-500" },
-  { icon: ListPlus, title: "Manage Categories", desc: "Organize categories, specials, and combos effortlessly with drag & drop.", color: "from-purple-500 to-pink-500" },
-  { icon: Zap, title: "Ads & Promotions", desc: "Show banner ads inside the menu to upsell high-margin items.", color: "from-yellow-500 to-orange-500" },
-  { icon: Check, title: "Add-to-List Ordering", desc: "Customers build a wishlist for the waiter, speeding up order taking.", color: "from-green-500 to-emerald-500" },
-  { icon: BookOpen, title: "Flipbook Menu", desc: "Beautiful interactive 3D flipbook for a premium dine-in experience.", color: "from-indigo-500 to-violet-500" },
-  { icon: RefreshCw, title: "Real-time Updates", desc: "86'd an item? Hide it instantly across all devices in one click.", color: "from-red-500 to-rose-500" },
+  { icon: Layers, title: "Modern Delivery-Style UI", desc: "A premium interface that feels like a top-tier delivery app. Very easy for customers to use.", color: "from-blue-500 to-cyan-500" },
+  { icon: Smartphone, title: "Update Prices from Phone", desc: "No more re-printing. Update any price or dish instantly directly from your smartphone.", color: "from-purple-500 to-pink-500" },
+  { icon: Zap, title: "Ads & 'Must-Try' Items", desc: "Boost sales by showing high-margin items and banner ads inside the menu.", color: "from-yellow-500 to-orange-500" },
+  { icon: Check, title: "Add-to-List Ordering", desc: "Customers build a wishlist for the waiter, speeding up order taking and accuracy.", color: "from-green-500 to-emerald-500" },
+  { icon: BookOpen, title: "3D Flipbook Experience", desc: "Beautiful interactive 3D flipbook for a premium dine-in experience.", color: "from-indigo-500 to-violet-500" },
+  { icon: RefreshCw, title: "Instant 86'ing", desc: "Out of stock? Hide items instantly across all tables in a single click.", color: "from-red-500 to-rose-500" },
   { icon: Gamepad2, title: "Gamified Rewards", desc: "Engage users with points, badges & challenges to keep them returning.", color: "from-orange-500 to-pink-500" },
-  { icon: Leaf, title: "Eco-Friendly", desc: "Go paperless. Reduce costs and your carbon footprint simultaneously.", color: "from-lime-500 to-green-500" },
+  { icon: Leaf, title: "Eco-Friendly", desc: "Stop struggling with paper waste. Go paperless and reduce your carbon footprint.", color: "from-lime-500 to-green-500" },
 ];
 
 const Features = () => {
@@ -203,7 +260,7 @@ const WhyChooseUs = () => {
              </h2>
              <div className="space-y-6">
                {[
-                 { title: "Faster Table Turnover", desc: "Streamlined ordering means guests get food faster and tables free up sooner.", icon: Zap },
+                 { title: 'Visual Clarity, Less Doubts', desc: 'Dynamic tags like "Spicy" or "Must-Try" answer guest questions instantly, freeing up your staff and speeding up the ordering process.', icon: Zap },
                  { title: "Increase Average Order Value", desc: "Smart upsells and visual menus encourage customers to order more.", icon: TrendingUp },
                  { title: "Zero Printing Costs", desc: "Stop spending thousands on paper menus every time you change a price.", icon: Layout },
                  { title: "Works on Any Device", desc: "No app download needed. Works in any browser on iOS and Android.", icon: Globe },
@@ -246,7 +303,7 @@ const WhyChooseUs = () => {
                    </div>
                    <div className="bg-slate-50 p-4 rounded-lg text-center border border-slate-100">
                      <div className="text-xs text-slate-400">Revenue</div>
-                     <div className="text-xl font-bold text-orange-500">$3.2k</div>
+                     <div className="text-xl font-bold text-orange-500">₹3.2k</div>
                    </div>
                 </div>
                 <div className="h-40 bg-slate-50 rounded-lg flex items-end justify-between p-4 gap-2 border border-slate-100">
@@ -284,77 +341,79 @@ const Showcase = () => {
   ];
 
   return (
-    <section id="showcase" className="py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-4 text-center">
-         <h2 className="text-4xl font-bold text-slate-900 mb-10">Designed for Experience</h2>
+    <>
+    </>
+    // <section id="showcase" className="py-20 bg-white">
+    //   <div className="max-w-5xl mx-auto px-4 text-center">
+    //      <h2 className="text-4xl font-bold text-slate-900 mb-10">Designed for Experience</h2>
          
-         <div className="flex justify-center space-x-2 mb-12">
-            {tabs.map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all border ${
-                  activeTab === tab.id 
-                  ? 'bg-orange-500 border-orange-500 text-white shadow-lg shadow-orange-500/30' 
-                  : 'bg-white border-gray-200 text-slate-500 hover:bg-slate-50'
-                }`}
-              >
-                <tab.icon size={18} />
-                <span className="font-medium">{tab.label}</span>
-              </button>
-            ))}
-         </div>
+    //      <div className="flex justify-center space-x-2 mb-12">
+    //         {tabs.map(tab => (
+    //           <button
+    //             key={tab.id}
+    //             onClick={() => setActiveTab(tab.id)}
+    //             className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all border ${
+    //               activeTab === tab.id 
+    //               ? 'bg-orange-500 border-orange-500 text-white shadow-lg shadow-orange-500/30' 
+    //               : 'bg-white border-gray-200 text-slate-500 hover:bg-slate-50'
+    //             }`}
+    //           >
+    //             <tab.icon size={18} />
+    //             <span className="font-medium">{tab.label}</span>
+    //           </button>
+    //         ))}
+    //      </div>
 
-         <div className="relative bg-slate-50 rounded-3xl p-2 border border-slate-200 shadow-xl overflow-hidden min-h-[400px]">
-            {/* Conditional Content based on Active Tab - Abstract UI */}
+    //      <div className="relative bg-slate-50 rounded-3xl p-2 border border-slate-200 shadow-xl overflow-hidden min-h-[400px]">
+    //         {/* Conditional Content based on Active Tab - Abstract UI */}
             
-            {activeTab === 'mobile' && (
-              <div className="flex justify-center items-center h-full py-8 animate-fade-in">
-                 <div className="flex gap-4 overflow-x-auto pb-4 px-4 snap-x">
-                   {[1,2,3].map(i => (
-                     <div key={i} className="flex-shrink-0 w-64 bg-white border border-slate-100 rounded-2xl p-4 shadow-lg snap-center">
-                        <div className="w-full h-32 bg-slate-100 rounded-lg mb-4 relative overflow-hidden">
-                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent flex items-end p-2">
-                              <span className="text-white font-bold text-sm">Delicious Item #{i}</span>
-                           </div>
-                        </div>
-                        <div className="flex justify-between items-center">
-                           <span className="text-orange-600 font-bold">$14.00</span>
-                           <button className="bg-slate-900 text-white p-2 rounded-lg text-xs hover:bg-orange-500 transition-colors">Add +</button>
-                        </div>
-                     </div>
-                   ))}
-                 </div>
-              </div>
-            )}
+    //         {activeTab === 'mobile' && (
+    //           <div className="flex justify-center items-center h-full py-8 animate-fade-in">
+    //              <div className="flex gap-4 overflow-x-auto pb-4 px-4 snap-x">
+    //                {[1,2,3].map(i => (
+    //                  <div key={i} className="flex-shrink-0 w-64 bg-white border border-slate-100 rounded-2xl p-4 shadow-lg snap-center">
+    //                     <div className="w-full h-32 bg-slate-100 rounded-lg mb-4 relative overflow-hidden">
+    //                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent flex items-end p-2">
+    //                           <span className="text-white font-bold text-sm">Delicious Item #{i}</span>
+    //                        </div>
+    //                     </div>
+    //                     <div className="flex justify-between items-center">
+    //                        <span className="text-orange-600 font-bold">$14.00</span>
+    //                        <button className="bg-slate-900 text-white p-2 rounded-lg text-xs hover:bg-orange-500 transition-colors">Add +</button>
+    //                     </div>
+    //                  </div>
+    //                ))}
+    //              </div>
+    //           </div>
+    //         )}
 
-            {activeTab === 'dashboard' && (
-              <div className="h-full p-8 animate-fade-in">
-                <div className="grid grid-cols-4 gap-4 mb-4">
-                  {[1,2,3,4].map(i => <div key={i} className="h-24 bg-white shadow-sm border border-slate-100 rounded-xl"></div>)}
-                </div>
-                <div className="h-64 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center text-slate-400">
-                  Analytics Graph Placeholder
-                </div>
-              </div>
-            )}
+    //         {activeTab === 'dashboard' && (
+    //           <div className="h-full p-8 animate-fade-in">
+    //             <div className="grid grid-cols-4 gap-4 mb-4">
+    //               {[1,2,3,4].map(i => <div key={i} className="h-24 bg-white shadow-sm border border-slate-100 rounded-xl"></div>)}
+    //             </div>
+    //             <div className="h-64 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center text-slate-400">
+    //               Analytics Graph Placeholder
+    //             </div>
+    //           </div>
+    //         )}
 
-            {activeTab === 'rewards' && (
-              <div className="flex flex-col items-center justify-center h-full py-12 animate-fade-in">
-                 <div className="w-24 h-24 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center mb-6 shadow-lg shadow-orange-500/20">
-                    <Star className="text-white w-12 h-12 fill-current" />
-                 </div>
-                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Gold Member</h3>
-                 <p className="text-slate-500 mb-6">1,250 Points Balance</p>
-                 <div className="w-64 h-2 bg-slate-200 rounded-full overflow-hidden">
-                   <div className="w-3/4 h-full bg-yellow-500"></div>
-                 </div>
-                 <p className="text-xs text-slate-400 mt-2">250 points to Platinum</p>
-              </div>
-            )}
-         </div>
-      </div>
-    </section>
+    //         {activeTab === 'rewards' && (
+    //           <div className="flex flex-col items-center justify-center h-full py-12 animate-fade-in">
+    //              <div className="w-24 h-24 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center mb-6 shadow-lg shadow-orange-500/20">
+    //                 <Star className="text-white w-12 h-12 fill-current" />
+    //              </div>
+    //              <h3 className="text-2xl font-bold text-slate-900 mb-2">Gold Member</h3>
+    //              <p className="text-slate-500 mb-6">1,250 Points Balance</p>
+    //              <div className="w-64 h-2 bg-slate-200 rounded-full overflow-hidden">
+    //                <div className="w-3/4 h-full bg-yellow-500"></div>
+    //              </div>
+    //              <p className="text-xs text-slate-400 mt-2">250 points to Platinum</p>
+    //           </div>
+    //         )}
+    //      </div>
+    //   </div>
+    // </section>
   );
 };
 
@@ -377,7 +436,7 @@ const EcoFriendly = () => {
               <div className="text-slate-600">Paper Reduction</div>
            </div>
            <div className="p-6 bg-white rounded-xl border border-green-100 shadow-sm">
-              <div className="text-4xl font-bold text-green-600 mb-2">$0</div>
+              <div className="text-4xl font-bold text-green-600 mb-2">₹0</div>
               <div className="text-slate-600">Printing Costs</div>
            </div>
            <div className="p-6 bg-white rounded-xl border border-green-100 shadow-sm">
@@ -547,14 +606,16 @@ const Footer = () => {
 
 // Main App Component
 const DigifyLanding = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
       <Navbar />
-      <Hero />
+      <Hero isDemoModalOpen={isDemoModalOpen} setIsDemoModalOpen={setIsDemoModalOpen} />
       <Features />
       <WhyChooseUs />
-      <Showcase />
-      <Testimonials />
+      {/* <Showcase /> */}
+      {/* <Testimonials /> */}
       <EcoFriendly />
       <Pricing />
       <Footer />
