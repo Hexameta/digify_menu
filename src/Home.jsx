@@ -115,7 +115,7 @@ const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-      window.location.href = 'https://menu.digifygarden.com';
+      window.location.href = 'https://menu.digifymenu.com';
     } else {
       setIsDemoModalOpen(true);
     }
@@ -142,7 +142,7 @@ const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
             Delicious.
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Stop wasting money on printing and start driving revenue. Update your pricing in seconds and highlight your most profitable dishes with a dynamic, mobile-managed menu system.
+            Stop wasting money on printing and start driving revenue with the best <strong>digital QR menu system</strong>. Update your pricing in seconds and highlight your most profitable dishes with a dynamic, mobile-managed menu system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button 
@@ -239,8 +239,8 @@ const Features = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-orange-500 font-bold tracking-wide uppercase mb-2">Features</h2>
-          <h3 className="text-4xl font-bold text-slate-900">Everything on the Menu</h3>
-          <p className="text-slate-500 mt-4 max-w-2xl mx-auto">Powerful tools designed to modernize your restaurant operations.</p>
+          <h3 className="text-4xl font-bold text-slate-900">Premium Digital QR Menu Features</h3>
+          <p className="text-slate-500 mt-4 max-w-2xl mx-auto">Modernize your restaurant in Ernakulam, Bengaluru, or Doha with our powerful contactless menu tools.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -439,7 +439,7 @@ const EcoFriendly = () => {
         </div>
         <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Go Digital. <span className="text-green-600">Go Green.</span></h2>
         <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10">
-          Switch from paper menus to a sustainable digital alternative. Reduce waste, save trees, and cut printing costs to zero.
+          Switch to a sustainable <strong>contactless menu</strong> alternative. Reduce waste, save trees, and cut printing costs to zero for your restaurant business in the UAE, Qatar, or India.
         </p>
         <div className="grid md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
            <div className="p-6 bg-white rounded-xl border border-green-100 shadow-sm">
@@ -623,9 +623,14 @@ const Footer = () => {
                 <Mail size={20} />
               </a>
             </div>
-            <div className="mt-6 flex items-center gap-2 text-xs text-gray-500">
-               <span>Powered by</span>
-               <span className="font-bold text-gray-300">HEXAMETA</span>
+            <div className="mt-6 flex flex-col gap-4">
+               <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <span>Powered by</span>
+                  <span className="font-bold text-gray-300">HEXAMETA</span>
+               </div>
+               <div className="text-[10px] text-gray-700 leading-tight">
+                 Serving restaurants in: Kochi • Ernakulam • Bangalore • Hyderabad • Dubai • Abu Dhabi • Doha
+               </div>
             </div>
           </div>
         </div>
