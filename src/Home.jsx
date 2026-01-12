@@ -4,7 +4,8 @@ import {
   Zap, Layers, BarChart3, ListPlus, 
   Gamepad2, Leaf, ShieldCheck, Layout, 
   ChevronRight, Star, Check, Globe,
-  RefreshCw, TrendingUp, MonitorSmartphone
+  RefreshCw, TrendingUp, MonitorSmartphone,
+  Instagram, Facebook, Mail
 } from 'lucide-react';
 import digifyMenuLogoDark from './assets/logos/digifyMenuLogoDark.png';
 import digifyMenuLogoWhite from './assets/logos/digifyMenuLogoWhite.png';
@@ -73,7 +74,10 @@ const Navbar = () => {
           <a href="#features" className="text-slate-600 hover:text-orange-600 transition-colors font-medium">Features</a>
           <a href="#showcase" className="text-slate-600 hover:text-orange-600 transition-colors font-medium">Showcase</a>
           <a href="#pricing" className="text-slate-600 hover:text-orange-600 transition-colors font-medium">Pricing</a>
-          <button className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:-translate-y-0.5">
+          <button 
+            onClick={() => window.location.href = 'mailto:digifymenuofficial@gmail.com'}
+            className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold hover:shadow-[0_0_20px_rgba(249,115,22,0.5)] transition-all transform hover:-translate-y-0.5"
+          >
             {/* Start Free Trial */}
             Contact Us
           </button>
@@ -91,8 +95,11 @@ const Navbar = () => {
           <a href="#features" className="text-slate-600 hover:text-orange-600 font-medium" onClick={() => setIsOpen(false)}>Features</a>
           <a href="#showcase" className="text-slate-600 hover:text-orange-600 font-medium" onClick={() => setIsOpen(false)}>Showcase</a>
           <a href="#pricing" className="text-slate-600 hover:text-orange-600 font-medium" onClick={() => setIsOpen(false)}>Pricing</a>
-          <button className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold">
-            Start Free Trial
+          <button 
+            onClick={() => window.location.href = 'mailto:digifymenuofficial@gmail.com'}
+            className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold"
+          >
+            Contact Us
           </button>
         </div>
       )}
@@ -137,8 +144,11 @@ const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
             Stop wasting money on printing and start driving revenue. Update your pricing in seconds and highlight your most profitable dishes with a dynamic, mobile-managed menu system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="px-8 py-4 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 transition-colors shadow-xl shadow-orange-500/10 flex items-center justify-center gap-2">
-              Start Free Trial <ChevronRight className="w-5 h-5" />
+            <button 
+              onClick={() => window.location.href = 'mailto:digifymenuofficial@gmail.com'}
+              className="px-8 py-4 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 transition-colors shadow-xl shadow-orange-500/10 flex items-center justify-center gap-2"
+            >
+              Contact Us <ChevronRight className="w-5 h-5" />
             </button>
             <button 
               onClick={handleDemoClick}
@@ -508,7 +518,12 @@ const Pricing = () => {
                    <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Basic Analytics</li>
                    <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Ads & Promotions Support</li>
                 </ul>
-                <button className="w-full py-3 rounded-xl border border-orange-500 text-orange-600 font-bold hover:bg-orange-50 transition-colors">Choose 6 Months</button>
+                <button 
+                  onClick={() => window.location.href = 'mailto:digifymenuofficial@gmail.com'}
+                  className="w-full py-3 rounded-xl border border-orange-500 text-orange-600 font-bold hover:bg-orange-50 transition-colors"
+                >
+                  Contact Us
+                </button>
              </div>
 
              {/* 1 Year Plan - Featured */}
@@ -533,7 +548,12 @@ const Pricing = () => {
                    <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Advanced Rewards System</li>
                    <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Priority Implementation Support</li>
                 </ul>
-                <button className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold shadow-lg hover:shadow-orange-500/50 transition-all">Start 1 Year Plan</button>
+                <button 
+                  onClick={() => window.location.href = 'mailto:digifymenuofficial@gmail.com'}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold shadow-lg hover:shadow-orange-500/50 transition-all"
+                >
+                  Contact Us
+                </button>
              </div>
           </div>
        </div>
@@ -579,11 +599,28 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-4">Connect</h4>
             <div className="flex gap-4">
-              {['Twitter', 'Facebook', 'Instagram', 'LinkedIn'].map((social, i) => (
-                <div key={i} className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-gray-400 hover:bg-orange-600 hover:text-white transition-colors cursor-pointer">
-                  {social[0]}
-                </div>
-              ))}
+              <a 
+                href="https://www.instagram.com/digifymenu_official?igsh=NnNobDF3cDM3cnRu" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-gray-400 hover:bg-orange-600 hover:text-white transition-all cursor-pointer shadow-lg hover:shadow-orange-600/20"
+              >
+                <Instagram size={20} />
+              </a>
+              <a 
+                href="https://www.instagram.com/digifymenu_official?igsh=NnNobDF3cDM3cnRu" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-gray-400 hover:bg-orange-600 hover:text-white transition-all cursor-pointer shadow-lg hover:shadow-orange-600/20"
+              >
+                <Facebook size={20} />
+              </a>
+              <a 
+                href="mailto:digifymenuofficial@gmail.com"
+                className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-gray-400 hover:bg-orange-600 hover:text-white transition-all cursor-pointer shadow-lg hover:shadow-orange-600/20"
+              >
+                <Mail size={20} />
+              </a>
             </div>
             <div className="mt-6 flex items-center gap-2 text-xs text-gray-500">
                <span>Powered by</span>
@@ -593,7 +630,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-sm">© 2024 Digify Menu. All rights reserved.</p>
+          <p className="text-gray-600 text-sm">© 2025 Digify Menu. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-gray-600">
             <span className="hover:text-gray-400 cursor-pointer">Privacy Policy</span>
             <span className="hover:text-gray-400 cursor-pointer">Terms of Service</span>
