@@ -8,9 +8,9 @@ import {
   Instagram, Facebook, Mail
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import digifyMenuLogoDark from './assets/logos/digifyMenuLogoDark.png';
-import digifyMenuLogoWhite from './assets/logos/digifyMenuLogoWhite.png';
-import demoQrCode from './assets/logos/demo-qr.png';
+import digifyMenuLogoDark from './assets/logo/digifyMenuLogoDark.png';
+import digifyMenuLogoWhite from './assets/logo/digifyMenuLogoWhite.png';
+import demoQrCode from './assets/logo/demo-qr.png';
 
 // --- Components ---
 
