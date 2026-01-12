@@ -400,13 +400,13 @@ const Features = () => {
 // 4. Why Choose Us
 const WhyChooseUs = () => {
   return (
-    <section className=" md:bg-[url('qrbanner.png')] bg-cover py-20 bg-slate-50 " >
+    <section className="md:bg-[url('qrbanner.png')] bg-cover py-20 bg-slate-50 " >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
               Why Restaurants Love{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-right from-orange-500 to-red-500">
                 Digify
               </span>
             </h2>
@@ -453,7 +453,7 @@ const WhyChooseUs = () => {
             </div>
           </div>
           <div className="d-block lg:hidden">
-            <img src="qrbanner.png" alt="Digify Menu Banner" className="rounded-2xl shadow-xl" />
+            <img src="assets/qrbanner.png" alt="Digify Menu Banner" className="rounded-2xl shadow-xl" />
           </div>
           {/* <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-2xl transform rotate-3 blur-sm opacity-30"></div>
