@@ -7,6 +7,7 @@ import {
   RefreshCw, TrendingUp, MonitorSmartphone,
   Instagram, Facebook, Mail
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import digifyMenuLogoDark from './assets/logos/digifyMenuLogoDark.png';
 import digifyMenuLogoWhite from './assets/logos/digifyMenuLogoWhite.png';
 import demoQrCode from './assets/logos/demo-qr.png';
@@ -632,8 +633,8 @@ const Footer = () => {
         <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-sm">© 2025 Digify Menu. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-gray-600">
-            <span className="hover:text-gray-400 cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-gray-400 cursor-pointer">Terms of Service</span>
+            <Link to="/privacy" className="hover:text-gray-400 cursor-pointer">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-gray-400 cursor-pointer">Terms of Service</Link>
           </div>
         </div>
       </div>
