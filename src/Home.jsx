@@ -6,6 +6,8 @@ import {
   ChevronRight, Star, Check, Globe,
   RefreshCw, TrendingUp, MonitorSmartphone
 } from 'lucide-react';
+import digifyMenuLogoDark from './assets/logos/digifyMenuLogoDark.png';
+import digifyMenuLogoWhite from './assets/logos/digifyMenuLogoWhite.png';
 
 // --- Components ---
 
@@ -24,12 +26,7 @@ const Navbar = () => {
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
-            <span className="text-white font-bold text-xl">D</span>
-          </div>
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600">
-            Digify Menu
-          </span>
+          <img src={digifyMenuLogoDark} alt="Digify Menu Logo" className="h-10 w-auto" />
         </div>
 
         {/* Desktop Nav */}
@@ -440,46 +437,44 @@ const Pricing = () => {
              <p className="text-slate-500 mt-2">No hidden fees. Cancel anytime.</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-             {/* Starter */}
-             <div className="bg-white rounded-2xl p-8 border border-slate-200 flex flex-col shadow-sm">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
-                <div className="text-4xl font-bold text-slate-900 mb-6">$29<span className="text-lg text-slate-400 font-normal">/mo</span></div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+             {/* 6 Months Plan */}
+             <div className="bg-white rounded-2xl p-8 border border-slate-200 flex flex-col shadow-sm hover:shadow-xl transition-shadow">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">6 Months</h3>
+                <div className="text-4xl font-bold text-slate-900 mb-2">Rs. 649</div>
+                <div className="text-lg text-orange-600 font-medium mb-6">Just Rs. 108<span className="text-sm text-slate-400 font-normal">/mo</span></div>
                 <ul className="space-y-4 mb-8 flex-1">
-                   <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Digital Menu</li>
+                   <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Digital Menu Management</li>
                    <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> QR Code Generator</li>
                    <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Basic Analytics</li>
+                   <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Ads & Promotions Support</li>
                 </ul>
-                <button className="w-full py-3 rounded-xl border border-orange-500 text-orange-600 font-bold hover:bg-orange-50 transition-colors">Choose Starter</button>
+                <button className="w-full py-3 rounded-xl border border-orange-500 text-orange-600 font-bold hover:bg-orange-50 transition-colors">Choose 6 Months</button>
              </div>
 
-             {/* Business - Featured */}
-             <div className="bg-white rounded-2xl p-8 border-2 border-orange-500 relative transform md:-translate-y-4 shadow-2xl flex flex-col">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
-                  Most Popular
+             {/* 1 Year Plan - Featured */}
+             <div className="bg-white rounded-2xl p-8 border-2 border-orange-500 relative shadow-2xl flex flex-col transform hover:scale-[1.02] transition-transform">
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                  Best Value
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Business</h3>
-                <div className="text-4xl font-bold text-slate-900 mb-6">$59<span className="text-lg text-slate-400 font-normal">/mo</span></div>
-                <ul className="space-y-4 mb-8 flex-1">
-                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Everything in Starter</li>
-                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Flipbook Mode</li>
-                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Ad Banner Management</li>
-                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Add-to-List Ordering</li>
-                </ul>
-                <button className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold shadow-lg hover:shadow-orange-500/50 transition-all">Start Free Trial</button>
-             </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">1 Year</h3>
+                <div className="text-4xl font-bold text-slate-900 mb-2">Rs. 1099</div>
+                <div className="text-lg text-orange-600 font-medium mb-6">Just Rs. 91.5<span className="text-sm text-slate-400 font-normal">/mo</span></div>
+                
+                <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 mb-8">
+                   <p className="text-orange-800 text-sm font-bold flex items-center gap-2">
+                     <Zap size={16} className="fill-current" /> 
+                     Limited Offer: 2 Acrylic Menu Stands absolutely FREE!
+                   </p>
+                </div>
 
-             {/* Enterprise */}
-             <div className="bg-white rounded-2xl p-8 border border-slate-200 flex flex-col shadow-sm">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Enterprise</h3>
-                <div className="text-4xl font-bold text-slate-900 mb-6">$99<span className="text-lg text-slate-400 font-normal">/mo</span></div>
                 <ul className="space-y-4 mb-8 flex-1">
-                   <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Multi-location support</li>
-                   <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Gamified Rewards</li>
-                   <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> API Access</li>
-                   <li className="flex items-center text-slate-600 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Priority Support</li>
+                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Everything in 6 Months</li>
+                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Flipbook Mode</li>
+                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Advanced Rewards System</li>
+                   <li className="flex items-center text-slate-700 text-sm"><Check size={16} className="text-orange-500 mr-2" /> Priority Implementation Support</li>
                 </ul>
-                <button className="w-full py-3 rounded-xl border border-orange-500 text-orange-600 font-bold hover:bg-orange-50 transition-colors">Contact Sales</button>
+                <button className="w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold shadow-lg hover:shadow-orange-500/50 transition-all">Start 1 Year Plan</button>
              </div>
           </div>
        </div>
@@ -495,7 +490,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <span className="text-2xl font-bold text-white">Digify Menu</span>
+              <img src={digifyMenuLogoWhite} alt="Digify Menu Logo" className="h-10 w-auto" />
             </div>
             <p className="text-gray-400 text-sm">
               Empowering restaurants with next-gen digital tools. Digital. Dynamic. Delicious.
