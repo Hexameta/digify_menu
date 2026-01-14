@@ -1,0 +1,22 @@
+{
+    "IN":{
+        "countryCode": "IN",
+        "demoURL": "https://menu.digifymenu.com/demo",
+        "contactNumber": "+91 75589 78583",
+        "whatsappNumber": "917558978583",
+        "packagePrice1": "699",
+        "packagePrice2": "1099",
+        "currency": "₹",
+        "currencyPosition": "before"
+    },
+    "AE":{
+        "countryCode": "AE",
+        "demoURL": "https://menu.digifymenu.com/demo-UAE",
+        "contactNumber": "+971 54 451 8153",
+        "whatsappNumber": "971544518153",
+        "packagePrice1": "79",
+        "packagePrice2": "129",
+        "currency": "AED",
+        "currencyPosition": "after"
+    }
+}

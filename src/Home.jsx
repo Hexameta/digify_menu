@@ -29,11 +29,16 @@ import digifyMenuLogoDark from "./assets/logo/digifyMenuLogoDark.png";
 import digifyMenuLogoWhite from "./assets/logo/digifyMenuLogoWhite.png";
 import bannerQr from "./assets/qrbanner.png";
 import demoQrCode from "./assets/logo/demo-qr.png";
+import demoQrCodeUAE from "./assets/logo/demo-qr-uae.png";
+
+import COUNTRYDATA from "./assets/datas.json";
 
 // --- Components ---
 
 // 0. Demo QR Modal
-const DemoModal = ({ isOpen, onClose }) => {
+const DemoModal = ({ isOpen, onClose,country }) => {
+
+  const [dynamicData, setDynamicData] = useState(null);
   if (!isOpen) return null;
 
   return (
@@ -58,7 +63,7 @@ const DemoModal = ({ isOpen, onClose }) => {
 
           <div className="bg-slate-50 p-6 rounded-2xl border-2 border-dashed border-slate-200">
             <img
-              src={demoQrCode}
+              src={country === "AE" ? demoQrCodeUAE : demoQrCode}
               alt="Scan to see demo"
               className="w-full aspect-square rounded-xl shadow-lg border-4 border-white"
             />
@@ -93,6 +98,8 @@ const Navbar = () => {
           : "bg-transparent py-5"
       }`}
     >
+      {/* Floating WhatsApp Button */}
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <img
@@ -181,7 +188,7 @@ const Navbar = () => {
 };
 
 // 2. Hero Section
-const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
+const Hero = ({ isDemoModalOpen, setIsDemoModalOpen, countryData }) => {
   const handleDemoClick = () => {
     // Simple check for mobile/tablet
     const isMobile =
@@ -190,7 +197,7 @@ const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
       );
 
     if (isMobile) {
-      window.location.href = "https://menu.digifymenu.com";
+      window.location.href = countryData.demoURL;
     } else {
       setIsDemoModalOpen(true);
     }
@@ -201,6 +208,7 @@ const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
       <DemoModal
         isOpen={isDemoModalOpen}
         onClose={() => setIsDemoModalOpen(false)}
+        country={countryData.countryCode}
       />
       {/* Background Shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
@@ -258,7 +266,7 @@ const Hero = ({ isDemoModalOpen, setIsDemoModalOpen }) => {
             {/* Mobile Screen */}
             <div className="absolute inset-0 bg-slate-50 overflow-hidden">
               <iframe
-                src="https://menu.digifymenu.com/demo"
+                src={countryData.demoURL}
                 title="Digify Menu Demo"
                 className="border-0"
                 style={{
@@ -712,7 +720,7 @@ const Testimonials = () => {
 };
 
 // 8. Pricing
-const Pricing = () => {
+const Pricing = ({ countryData }) => {
   return (
     <section id="pricing" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -728,11 +736,19 @@ const Pricing = () => {
           <div className="bg-white rounded-2xl p-8 border border-slate-200 flex flex-col shadow-sm hover:shadow-xl transition-shadow">
             <h3 className="text-xl font-bold text-slate-900 mb-2">6 Months</h3>
             <div className="text-4xl font-bold text-slate-900 mb-2">
-              Rs. 649
+              {countryData.currencyPosition === "before"
+                ? `${countryData.currency} ${countryData.packagePrice1}`
+                : `${countryData.packagePrice1} ${countryData.currency}`}
             </div>
             <div className="text-lg text-orange-600 font-medium mb-6">
-              Just Rs. 108
-              <span className="text-sm text-slate-400 font-normal">/mo</span>
+              Just {countryData.currencyPosition === "before"
+                ? `${countryData.currency} ${(
+                    countryData.packagePrice1 / 6
+                  ).toFixed(2)}`
+                : `${(countryData.packagePrice1 / 6).toFixed(2)} ${
+                    countryData.currency
+                  }`}
+              <span className="text-sm text-slate-400 font-normal">/month</span>
             </div>
             <ul className="space-y-4 mb-8 flex-1">
               <li className="flex items-center text-slate-600 text-sm">
@@ -769,11 +785,17 @@ const Pricing = () => {
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-2">1 Year</h3>
             <div className="text-4xl font-bold text-slate-900 mb-2">
-              Rs. 1099
+              {countryData.currencyPosition === "before"
+                ? `${countryData.currency} ${countryData.packagePrice2}`
+                : `${countryData.packagePrice2} ${countryData.currency}`}
             </div>
             <div className="text-lg text-orange-600 font-medium mb-6">
-              Just Rs. 91.5
-              <span className="text-sm text-slate-400 font-normal">/mo</span>
+              Just {countryData.currencyPosition === "before"
+                ? `${countryData.currency} ${(countryData.packagePrice2 / 12).toFixed(2)}`
+                : `${(countryData.packagePrice2 / 12).toFixed(2)} ${
+                    countryData.currency
+                  }`}
+              <span className="text-sm text-slate-400 font-normal">/month</span>
             </div>
 
             <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 mb-8">
@@ -916,6 +938,17 @@ const Footer = () => {
 // Main App Component
 const DigifyLanding = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [countryData, setCountryData] = useState(COUNTRYDATA.IN);
+
+  useEffect(() => {
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.country); // "AE"
+        console.log(data.country_name); // "United Arab Emirates"
+        setCountryData(COUNTRYDATA[data.country] || COUNTRYDATA.IN);
+      });
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
@@ -923,14 +956,23 @@ const DigifyLanding = () => {
       <Hero
         isDemoModalOpen={isDemoModalOpen}
         setIsDemoModalOpen={setIsDemoModalOpen}
+        countryData={countryData}
       />
       <Features />
       <WhyChooseUs />
       {/* <Showcase /> */}
       {/* <Testimonials /> */}
       <EcoFriendly />
-      <Pricing />
+      <Pricing countryData={countryData} />
       <Footer />
+      <a
+        href={`https://wa.me/${countryData.whatsappNumber}?text=Hello%20Digify%20Menu,%20I%20would%20like%20to%20know%20more%20about%20your%20services.`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-40 w-30 h-14 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-orange-500/50 hover:scale-110 transition-all duration-300 animate-bounce"
+      >
+         Chat with us
+      </a>
     </div>
   );
 };
