@@ -1,89 +1,228 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="icon" href="/favicon/favicon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <link rel="icon" href="/favicon/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <!-- Indexing -->
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://digifymenu.com/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Performance (optional but good) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Primary Meta Tags -->
-  <title>Digify Menu | Best Digital QR Menu for Restaurants in Kochi, Bangalore, Dubai & Qatar</title>
-  <meta name="title" content="Digify Menu | Best Digital QR Menu for Restaurants in Kochi, Bangalore, Dubai & Qatar" />
-  <meta name="description"
-    content="Replace printed menus with Digify's smart digital QR menu. Update prices instantly, boost sales with 'Must-Try' items. Serving restaurants in Kochi, Bangalore, Hyderabad, Dubai, and Qatar." />
-  <meta name="keywords"
-    content="digital menu, QR menu restaurant, contactless menu Kochi, smart menu Bangalore, digital menu card Dubai, QR ordering system Qatar, Digify Menu, Hexameta" />
-  <meta name="author" content="Hexameta" />
-  <link rel="canonical" href="https://digifymenu.com/" />
+    <!-- Primary SEO -->
+    <title>
+      Digify Menu | Digital QR Menu for Restaurants in Kochi, Bangalore, Dubai &
+      Qatar
+    </title>
+    <meta
+      name="title"
+      content="Digify Menu | Digital QR Menu for Restaurants in Kochi, Bangalore, Dubai & Qatar"
+    />
+    <meta
+      name="description"
+      content="Digify Menu helps restaurants replace printed menus with a fast digital QR menu. Update items & prices instantly, highlight Must-Try dishes, and deliver a premium menu experience for guests across India & the Middle East."
+    />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://digifymenu.com/" />
-  <meta property="og:title" content="Digify Menu | Stop Printing. Go Digital. Boost Sales." />
-  <meta property="og:description"
-    content="The ultimate digital menu system for modern restaurants. Instant updates, sales tracking, and premium UI. Trusted in India and Middle East." />
-  <meta property="og:image" content="/digify-social-preview.png" />
+    <!-- Keywords (keep short; Google mostly ignores but harmless) -->
+    <meta
+      name="keywords"
+      content="digital qr menu, qr code menu for restaurants, restaurant digital menu, qr menu kochi, qr menu bangalore, qr menu dubai, qr menu qatar, digify menu"
+    />
+    <meta name="author" content="Hexameta" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://digifymenu.com/" />
-  <meta property="twitter:title" content="Digify Menu | Digital Menu System for Modern Restaurants" />
-  <meta property="twitter:description"
-    content="Replace paper menus with smart QR codes. Update any price instantly from your phone. Serving Kochi, Bangalore, Dubai & more." />
-  <meta property="twitter:image" content="/digify-social-preview.png" />
+    <!-- Local / Geo (optional) -->
+    <meta name="geo.region" content="IN-KL" />
+    <meta name="geo.placename" content="Kochi" />
+    <meta name="theme-color" content="#0ea5e9" />
 
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Digify Menu",
-      "operatingSystem": "All",
-      "applicationCategory": "BusinessApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "649",
-        "priceCurrency": "INR"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "1250"
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://digifymenu.com/" />
+    <meta property="og:site_name" content="Digify Menu" />
+    <meta
+      property="og:title"
+      content="Digify Menu | Stop Printing. Go Digital. Boost Sales."
+    />
+    <meta
+      property="og:description"
+      content="Smart digital QR menu for modern restaurants. Instant updates, Must-Try highlights, and a premium menu experience. Serving India & Middle East."
+    />
+    <meta
+      property="og:image"
+      content="https://digifymenu.com/digify-social-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://digifymenu.com/" />
+    <meta
+      name="twitter:title"
+      content="Digify Menu | Digital QR Menu for Restaurants"
+    />
+    <meta
+      name="twitter:description"
+      content="Replace paper menus with smart QR codes. Update items & pricing instantly. Available in Kochi, Bangalore, Hyderabad, Dubai & Qatar."
+    />
+    <meta
+      name="twitter:image"
+      content="https://digifymenu.com/digify-social-preview.png"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://digifymenu.com/#organization",
+            "name": "Digify Menu",
+            "url": "https://digifymenu.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://digifymenu.com/logo/logo.png"
+            },
+            "email": "digifymenuofficial@gmail.com",
+            "brand": "Digify Menu",
+            "sameAs": []
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://digifymenu.com/#website",
+            "url": "https://digifymenu.com/",
+            "name": "Digify Menu",
+            "publisher": { "@id": "https://digifymenu.com/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://digifymenu.com/#webpage",
+            "url": "https://digifymenu.com/",
+            "name": "Digify Menu | Digital QR Menu for Restaurants",
+            "isPartOf": { "@id": "https://digifymenu.com/#website" },
+            "about": { "@id": "https://digifymenu.com/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://digifymenu.com/#app",
+            "name": "Digify Menu",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "All",
+            "url": "https://digifymenu.com/",
+            "publisher": { "@id": "https://digifymenu.com/#organization" },
+            "offers": {
+              "@type": "Offer",
+              "price": "649",
+              "priceCurrency": "INR",
+              "url": "https://digifymenu.com/"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "1250"
+            }
+          }
+        ]
       }
-    }
-  </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Digify Menu",
-      "url": "https://digifymenu.com",
-      "logo": "https://digifymenu.com/logo/logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "digifymenuofficial@gmail.com",
-        "contactType": "customer service"
-      },
-      "address": [
-        { "@type": "PostalAddress", "addressLocality": "Kochi", "addressRegion": "Kerala", "addressCountry": "IN" },
-        { "@type": "PostalAddress", "addressLocality": "Ernakulam", "addressRegion": "Kerala", "addressCountry": "IN" },
-        { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" },
-        { "@type": "PostalAddress", "addressLocality": "Hyderabad", "addressRegion": "Telangana", "addressCountry": "IN" },
-        { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
-        { "@type": "PostalAddress", "addressLocality": "Doha", "addressCountry": "QA" }
-      ]
-    }
-  </script>
-</head>
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Digify Menu",
+        "url": "https://digifymenu.com",
+        "logo": "https://digifymenu.com/logo/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "digifymenuofficial@gmail.com",
+          "contactType": "customer service"
+        },
+        "address": [
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Kochi",
+            "addressRegion": "Kerala",
+            "addressCountry": "IN"
+          },
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Ernakulam",
+            "addressRegion": "Kerala",
+            "addressCountry": "IN"
+          },
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Hyderabad",
+            "addressRegion": "Telangana",
+            "addressCountry": "IN"
+          },
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Dubai",
+            "addressCountry": "AE"
+          },
+          {
+            "@type": "PostalAddress",
+            "addressLocality": "Doha",
+            "addressCountry": "QA"
+          }
+        ]
+      }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SRF27Q1YBZ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+      gtag("config", "G-SRF27Q1YBZ");
+    </script>
+  </head>
 
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
