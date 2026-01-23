@@ -798,12 +798,12 @@ const Pricing = ({ countryData }) => {
               <span className="text-sm text-slate-400 font-normal">/month</span>
             </div>
 
-            <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 mb-8">
+            {/* <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 mb-8">
               <p className="text-orange-800 text-sm font-bold flex items-center gap-2">
                 <Zap size={16} className="fill-current" />
                 Limited Offer: 2 Acrylic Menu Stands absolutely FREE!
               </p>
-            </div>
+            </div> */}
 
             <ul className="space-y-4 mb-8 flex-1">
               <li className="flex items-center text-slate-700 text-sm">
