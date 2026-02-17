@@ -941,11 +941,11 @@ const DigifyLanding = () => {
   const [countryData, setCountryData] = useState(COUNTRYDATA.IN);
 
   useEffect(() => {
-    fetch("http://ip-api.com/json/")
+    fetch("https://ipapi.co/json/")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.countryCode); // "AE"
-        console.log(data.country); // "United Arab Emirates"
+        console.log(data.country); // "AE"
+        console.log(data.country_name); // "United Arab Emirates"
         setCountryData(COUNTRYDATA[data.country] || COUNTRYDATA.IN);
       });
   }, []);
